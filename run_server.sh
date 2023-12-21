@@ -1,0 +1,1 @@
+python -m llama_cpp.server --model "./models/openhermes-2.5-mistral-7b.Q8_0.gguf" --model_alias "local-llm" --host 0.0.0.0 --port 23333 --n_ctx 32768 --n_gpu_layers 33 --n_threads 8 --n_threads_batch 8 --interrupt_requests True

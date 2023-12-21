@@ -71,8 +71,9 @@ This will launch a LLM server which supports requests in OpenAI API format.
 > - https://llama-cpp-python.readthedocs.io/en/latest/server/#running-the-server
 
 ```sh
-python -m llama_cpp.server --model "./models/dolphin-2.5-mixtral-8x7b.Q5_K_M.gguf" --model_alias "dolphin-2.5-mixtral-8x7b" --n_ctx 16192 --n_gpu_layers 28 --host 0.0.0.0 --port 23333 --interrupt_requests True
+python -m llama_cpp.server --model "./models/dolphin-2.5-mixtral-8x7b.Q5_K_M.gguf" --model_alias "dolphin-2.5-mixtral-8x7b" --host 0.0.0.0 --port 23333 --n_ctx 16192 --n_gpu_layers 28 --interrupt_requests True
 ```
+
 Go to API docs: `http://<host>:<port>/docs`.
 
 #### Chat via `openai`
