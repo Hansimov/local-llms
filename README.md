@@ -9,16 +9,20 @@ All these commands are run on `Ubuntu 22.04.2 LTS`.
 
 This is used to use `huggingface-cli` to download models.
 
+> See: **Installation of huggingface_hub**
+> - https://huggingface.co/docs/huggingface_hub/installation#install-optional-dependencies
+
 ```sh
 pip install 'huggingface_hub[cli,torch]'
 ```
 
 ### Download models from HuggingFace
 
-Example of download:
+> See: **Model card of dolphin-2.5-mixtral-8x7b-GGUF**
+> - https://huggingface.co/TheBloke/dolphin-2.5-mixtral-8x7b-GGUF
+> - `dolphin-2.5-mixtral-8x7b.Q5_K_M.gguf`
 
-- https://huggingface.co/TheBloke/dolphin-2.5-mixtral-8x7b-GGUF
-- `dolphin-2.5-mixtral-8x7b.Q5_K_M.gguf`
+Example of download:
 
 ```sh
 HF_ENDPOINT=https://hf-mirror.com HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download TheBloke/dolphin-2.5-mixtral-8x7b-GGUF dolphin-2.5-mixtral-8x7b.Q5_K_M.gguf --local-dir ./models/ --local-dir-use-symlinks False
@@ -28,12 +32,20 @@ HF_ENDPOINT=https://hf-mirror.com HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli do
 
 This is to enable GPU acceleration.
 
+> See: **How to install CUDA & cuDNN on Ubuntu 22.04**
+> - https://gist.github.com/denguir/b21aa66ae7fb1089655dd9de8351a202
+
 ```sh
 # nvcc --version
 sudo apt install nvidia-cuda-toolkit
 ```
 
 ### Install `llama-cpp-python`
+
+This package is Python Bindings for llama.cpp, which enables running LLM locally with both CPU and GPUs.
+
+> See: **README of llama-cpp-python**
+> - https://github.com/abetlen/llama-cpp-python/tree/main?tab=readme-ov-file#installation
 
 ```sh
 LLAMA_CUBLAS=1 CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python
@@ -77,5 +89,4 @@ stream = llm.create_completion(
 
 for chunk in stream:
     print(chunk["choices"][0]["text"], end="")
-
 ```
