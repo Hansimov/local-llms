@@ -46,18 +46,34 @@ This package is Python Bindings for llama.cpp, which enables running LLM locally
 
 > See: **README of llama-cpp-python**
 > - https://github.com/abetlen/llama-cpp-python/tree/main?tab=readme-ov-file#installation
+> 
+> See: **OpenAI Compatible Server of llama-cpp-python**
+> - https://llama-cpp-python.readthedocs.io/en/latest/server/#installation
 
 ```sh
-LLAMA_CUBLAS=1 CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python
+LLAMA_CUBLAS=1 CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python[server]
 ```
 
 If you have installed `llama-cpp-python` before setup nvcc correctly, you need setup nvcc first, then reinstall `llama-cpp-python`:
 
 ```sh
-LLAMA_CUBLAS=1 CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python --upgrade --force-reinstall --no-cache-dir
+LLAMA_CUBLAS=1 CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python[server] --upgrade --force-reinstall --no-cache-dir
 ```
 
 ## Usage
+
+### Chat via server API - [Recommended]
+#### Run server
+
+This will launch a LLM server which supports requests in OpenAI API format.
+
+> See: **OpenAI Compatible Server in llama-cpp-python**
+> - https://llama-cpp-python.readthedocs.io/en/latest/server/#running-the-server
+
+```sh
+python -m llama_cpp.server --model "./models/dolphin-2.5-mixtral-8x7b.Q5_K_M.gguf" --model_alias "dolphin-2.5-mixtral-8x7b" --n_ctx 16192 --n_gpu_layers 28 --host 0.0.0.0 --port 23333 --interrupt_requests True
+```
+Go to API docs: `http://<host>:<port>/docs`.
 
 Here is a quick and dirty exmample script. (Improvements are in progress.)
 
